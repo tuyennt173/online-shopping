@@ -70,4 +70,11 @@ app.controller("shopping-cart-controller", function ($scope, $http) {
     }
 
     $scope.cart.loadProductsFromLocalStorage();
+    $scope.order = {
+        createDate: new Date(),
+        address: "",
+        purchase() {
+            alert('purchase')
+        }
+    }
 })

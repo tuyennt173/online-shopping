@@ -8,8 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/order")
 public class OrderController {
 
-    @GetMapping("/view")
+    @GetMapping("/checkout")
     public String show() {
         return "order/checkout";
     }
+
+    @GetMapping("/list")
+    public String listOrder() {
+        return "order/list";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String detail() {
+        return "order/detail";
+    }
+
 }
