@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<body>
+    <main>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                SHOPPING CART
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in cart.items">
+                        <td style="max-width: 80%">
+                            <div style="max-width: 30%; max-height: 30%;">
+                                <img style="width: 90%; height: 90%; object-fit: cover;" src="/assets/images/{{item.image}}">
+                            </div>
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>${{item.price | number : 2}}</td>
+                        <td><input ng-change="cart.saveToLocalStorage()" ng-model="item.quantity" type="number" min="1" style="width: 50%;"></td>
+                        <td>${{item.price * item.quantity | number : 2}}</td>
+                        <td> 
+                            <button ng-click="cart.remove(item.id)" class="btn btn-sm btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel-footer">
+                <button ng-click="cart.clear()" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i> Clear
+                </button>
+                <a th:href="@{/order/checkout}" class="btn btn-success">
+                    Checkout ~ ${{cart.totalPrice()}}
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

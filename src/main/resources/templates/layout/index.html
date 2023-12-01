@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Online Shop</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body class="container" ng-app="shopping-cart-app" ng-controller="shopping-cart-controller">
+
+    <header class="row well" 
+    style="margin-top: 20px; border: 1px solid rgb(48, 179, 16); color: rgb(48, 179, 16); box-shadow: inset;">
+        My Online Shop - Ngô Trung Tuyến
+    </header>
+
+    <nav class="row">
+        <div th:replace="/layout/_menu.html"></div>
+    </nav>
+
+    <div class="row">
+        <article class="col-sm-9">
+            <div th:replace="${main}"></div>
+        </article>
+        <aside class="col-sm-3">
+            <div th:replace="/layout/_cart-info.html"></div>
+            <div th:replace="/layout/_category.html"></div>
+        </aside>
+    </div>
+    <hr>
+
+    <footer class="bg-body-tertiary text-center text-lg-start"
+            style="height: 45px;background-color: rgba(0, 0, 0, 0.05);line-height: inherit;">
+            Contact: tuyennt173@gmail.com | 0359966461.
+    </footer>
+
+    <script src="/assets/js/shopping-cart-app.js"></script>
+</body>
+
+</html>
