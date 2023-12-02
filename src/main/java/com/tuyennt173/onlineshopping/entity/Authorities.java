@@ -1,9 +1,11 @@
 package com.tuyennt173.onlineshopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -16,9 +18,11 @@ public class Authorities {
 
     @ManyToOne
     @JoinColumn(name = "user_name")
+    @JsonIgnore
     private Accounts account;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
+    @JsonIgnore
     private Roles role;
 }

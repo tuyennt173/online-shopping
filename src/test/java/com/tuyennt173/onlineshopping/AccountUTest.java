@@ -20,7 +20,13 @@ public class AccountUTest {
 
     @Test
     public void showOne() {
-        Accounts accounts = accountService.getAccountByUserName("staff");
-        System.out.println(accounts.getUserName() + " | " + accounts.getFullName());
+        Accounts account = accountService.getAccountByUserName("staff");
+        System.out.println(account.getUserName() + " | " + account.getFullName());
+    }
+    
+    @Test
+    public void showRecordGetByUserName() {
+        Accounts account = accountService.getAccountByUserName("customer");
+        System.out.println(account.getUserName() + " | " + account.getPassword());
     }
 }

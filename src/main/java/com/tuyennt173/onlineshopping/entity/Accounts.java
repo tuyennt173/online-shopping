@@ -1,9 +1,12 @@
 package com.tuyennt173.onlineshopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Accounts {
     @Id
     private String userName;
@@ -19,6 +23,8 @@ public class Accounts {
     private String email;
     private String photo;
 
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Authorities> authorities;
+
 }

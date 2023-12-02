@@ -1,5 +1,6 @@
 package com.tuyennt173.onlineshopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ public class Roles {
     private String id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "role")
     private List<Authorities> authorities;
 }
