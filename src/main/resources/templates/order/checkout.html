@@ -2,13 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
 <body>
     <main>
+        <div th:replace="~{/cart/view :: shoppingCart}"></div>
+
         <div class="panel panel-primary">
             <div class="panel-heading">ORDER PURCHASING</div>
             <div class="panel-body">
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <div>Customer: </div>
-                        <div class="form-control">
+                        <div class="form-control" id="username">
                             Test
                         </div>
                     </div>

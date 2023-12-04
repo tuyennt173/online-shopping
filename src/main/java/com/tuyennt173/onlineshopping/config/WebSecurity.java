@@ -30,8 +30,9 @@ public class WebSecurity {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/admin/**").hasAnyRole("STAF", "DIRE")
-                                .requestMatchers("/order/checkout").authenticated()
+                        authorize.requestMatchers("/order/**").authenticated()
+                                .requestMatchers("/admin/**").hasAnyRole("STAF", "DIRE")
+                                .requestMatchers("/api/authorize").hasAnyRole("DIRE")
                                 .anyRequest().permitAll()
                 )
                 .formLogin(
@@ -46,7 +47,7 @@ public class WebSecurity {
                 )
                 .logout(
                         logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/security/logoff"))
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/security/logout"))
                                 .permitAll()
                 )
                 .httpBasic();

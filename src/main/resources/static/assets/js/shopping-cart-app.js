@@ -73,8 +73,33 @@ app.controller("shopping-cart-controller", function ($scope, $http) {
     $scope.order = {
         createDate: new Date(),
         address: "",
+        account: {
+            username: document.getElementById("username")
+        },
+        get orderDetails() {
+            return $scope.cart.items.map(
+                item => {
+                    return {
+                        product: {
+                            id: item.id
+                        },
+                        price: item.price,
+                        quantity: item.quantity
+                    }
+                });
+        },
         purchase() {
-            alert('purchase')
+            let order = angular.copy(this);
+            $http.post("/api/orders", order)
+                .then(resp => {
+                    alert('Ordered Successfully.');
+                    $scope.cart.clear();
+                    location.href = "order/detail/" + resp.data.id;
+                })
+                .catch(error => {
+                    alert("Ordered Failed, Please Try Again");
+                    console.log(error);
+                });
         }
     }
 })

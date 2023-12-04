@@ -29,13 +29,13 @@ public class HandleSecurityController {
         return "form/login";
     }
 
-    @GetMapping("/security/unauthorized")
+    @GetMapping("/unauthorized")
     public String unauthoried(Model model) {
         model.addAttribute("message", "Access Denied!");
         return "form/login";
     }
 
-    @GetMapping("/security/logoff/success")
+    @GetMapping("/logout/success")
     public String logout(Model model) {
         model.addAttribute("message", "Logout completely..");
         return "form/login";
