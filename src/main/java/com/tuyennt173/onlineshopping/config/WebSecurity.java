@@ -48,7 +48,7 @@ public class WebSecurity {
                 .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                                .permitAll()
+                                .logoutSuccessUrl("/user/logout/success")
                 )
                 .httpBasic(Customizer.withDefaults());
         return http.build();
