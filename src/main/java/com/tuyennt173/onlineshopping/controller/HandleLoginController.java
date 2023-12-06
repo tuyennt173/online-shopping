@@ -1,19 +1,13 @@
 package com.tuyennt173.onlineshopping.controller;
 
-import com.tuyennt173.onlineshopping.entity.Accounts;
-import com.tuyennt173.onlineshopping.entity.Authorities;
 import com.tuyennt173.onlineshopping.service.AccountService;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Collection;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -28,7 +22,9 @@ public class HandleLoginController {
     }
 
     @GetMapping("/login/success")
-    public String loginSuccess(Model model) {
+    public String loginSuccess(Model model, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()    ;
+        System.out.println(userDetails.getAuthorities());
         return "redirect:/product/list";
     }
 
