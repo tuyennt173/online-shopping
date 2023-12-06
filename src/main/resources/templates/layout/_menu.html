@@ -8,7 +8,7 @@
                     <li><a th:href="@{/product/list}">Home</a></li>
                     <li sec:authorize="isAuthenticated()"><a th:href="@{/user/logout}" onclick="return confirm('Are you sure?')">Logout</a></li>
                     <li sec:authorize="isAuthenticated()"><a th:href="@{/order/list}">Your Orders</a></li>
-                    <li sec:authorize access="hasRole('STAF') or hasRole('DIRE')">
+                    <li sec:authorize="hasAuthority('STAF') or hasAuthority('DIRE')">
                         <a th:href="@{/admin/home/index}">Administration</a>
                     </li>
                     <li sec:authorize="!isAuthenticated()"><a th:href="@{/user/login/form}">Sign In</a></li>
