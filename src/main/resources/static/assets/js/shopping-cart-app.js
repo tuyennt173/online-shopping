@@ -5,6 +5,7 @@ app.controller("shopping-cart-controller", function ($scope, $http) {
         items: [],
 
         add(id) {
+            console.log(id);
             let cf = confirm('Add to cart?');
             if (cf) {
                 let itemFound = this.items.find(item => item.id == id);
@@ -70,11 +71,11 @@ app.controller("shopping-cart-controller", function ($scope, $http) {
     }
 
     $scope.cart.loadProductsFromLocalStorage();
-    $scope.order = {
+    $scope.orders = {
         createDate: new Date(),
         address: "",
         account: {
-            username: document.getElementById("username")
+            userName: 'staff'
         },
         get orderDetails() {
             return $scope.cart.items.map(
@@ -88,16 +89,17 @@ app.controller("shopping-cart-controller", function ($scope, $http) {
                     }
                 });
         },
-        purchase() {
+        handlePurchase() {
             let order = angular.copy(this);
-            $http.post("/api/orders", order)
+            $http.post("/api/orders/create", order)
                 .then(resp => {
                     alert('Ordered Successfully.');
+                    console.log(resp.data)
                     $scope.cart.clear();
-                    location.href = "order/detail/" + resp.data.id;
+                    location.href = "/order/detail/" + resp.data.id;
                 })
                 .catch(error => {
-                    alert("Ordered Failed, Please Try Again");
+                    alert("Ordered Fail, Please Try Again");
                     console.log(error);
                 });
         }

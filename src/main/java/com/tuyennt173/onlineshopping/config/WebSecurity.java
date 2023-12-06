@@ -3,7 +3,6 @@ package com.tuyennt173.onlineshopping.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,20 +36,19 @@ public class WebSecurity {
                 )
                 .formLogin(
                         form -> form
-                                .loginPage("/security/login/form")
-                                .loginProcessingUrl("/security/login")
+                                .loginPage("/user/login")
+                                .loginProcessingUrl("/user/login")
                                 .defaultSuccessUrl("/product/list", false)
-                                .failureUrl("/security/login/failed")
+                                .failureUrl("/user/login/failed")
                 )
                 .exceptionHandling(
-                        e -> e.accessDeniedPage("/security/unauthorized")
+                        e -> e.accessDeniedPage("/user/unauthorized")
                 )
                 .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/security/logout"))
                                 .permitAll()
-                )
-                .httpBasic();
+                );
         return http.build();
     }
 

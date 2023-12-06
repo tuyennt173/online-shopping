@@ -29,4 +29,10 @@ public class AccountUTest {
         Accounts account = accountService.getAccountByUserName("customer");
         System.out.println(account.getUserName() + " | " + account.getPassword());
     }
+
+    @Test
+    public void showRolesOfUser() {
+        Accounts account = accountService.getAccountByUserName("customer");
+        account.getAuthorities().forEach(auth -> System.out.println(auth.getRole().getId()));
+    }
 }

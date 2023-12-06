@@ -1,14 +1,23 @@
 package com.tuyennt173.onlineshopping.controller;
 
+import com.tuyennt173.onlineshopping.entity.Accounts;
+import com.tuyennt173.onlineshopping.entity.Authorities;
 import com.tuyennt173.onlineshopping.service.AccountService;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collection;
+import java.util.List;
+
 @Controller
-@RequestMapping("/security")
-public class HandleSecurityController {
+@RequestMapping("/user")
+public class HandleLoginController {
 
     private AccountService accountService;
 

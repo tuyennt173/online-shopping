@@ -27,12 +27,15 @@ public class CustomUserDetailsService implements UserDetailsService {
         if(account == null) {
             throw new UsernameNotFoundException("Username or password is not valid with: " + username);
         } else {
-            String userName = account.getUserName();
-            String password = account.getPassword();
-            List<GrantedAuthority> authorities = account.getAuthorities().stream()
-                    .map(auth -> new SimpleGrantedAuthority(auth.getRole().getId()))
-                    .collect(Collectors.toList());
-            return new User(userName, password, authorities);
+
+            return new CustomUserDetails(account);
+
+//            String userName = account.getUserName();
+//            String password = account.getPassword();
+//            List<GrantedAuthority> authorities = account.getAuthorities().stream()
+//                    .map(auth -> new SimpleGrantedAuthority(auth.getRole().getId()))
+//                    .collect(Collectors.toList());
+//            return new User(userName, password, authorities);
         }
     }
 
