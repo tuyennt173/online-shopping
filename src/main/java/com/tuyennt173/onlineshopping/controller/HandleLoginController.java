@@ -15,7 +15,7 @@ public class HandleLoginController {
 
     private AccountService accountService;
 
-    @GetMapping("/login/form")
+    @GetMapping("/login")
     public String loginForm(Model model) {
         model.addAttribute("message", "Please login.");
         return "form/login";
@@ -35,9 +35,8 @@ public class HandleLoginController {
     }
 
     @GetMapping("/unauthorized")
-    public String unauthoried(Model model) {
-        model.addAttribute("message", "Access Denied!");
-        return "form/login";
+    public String unauthorized() {
+        return "unauthorized/unauthorized";
     }
 
     @GetMapping("/logout/success")

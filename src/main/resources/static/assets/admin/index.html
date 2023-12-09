@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Online Shop</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body class="container" ng-app="admin-app">
+
+    <header class="row well"
+            style="margin-top: 20px; border: 1px solid rgb(48, 179, 16); color: rgb(48, 179, 16); box-shadow: inset;">
+        Admin DashBoard
+    </header>
+
+        <div class="row">
+            <nav class="navbar navbar-inverse" style="font-variant: small-caps;">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#!product">Products</a></li>
+                        <li><a href="#!authorize">Authorizing</a> </li>
+                        <li><a href="/user/logout" onclick="return confirm('Are you sure?')">Logout</a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    <hr>
+
+    <main>
+        <div ng-view></div>
+    </main>
+
+    <footer class="bg-body-tertiary text-center text-lg-start"
+            style="height: 45px;background-color: rgba(0, 0, 0, 0.05);line-height: inherit;">
+        Contact: tuyennt173@gmail.com | 0359966461.
+    </footer>
+
+    <script src="/assets/admin/admin-app.js"></script>
+    <script src="/assets/admin/authority/authority-controller.js"></script>
+    <script src="/assets/admin/product/product-controller.js"></script>
+</body>
+
+</html>

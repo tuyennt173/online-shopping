@@ -1,5 +1,6 @@
 package com.tuyennt173.onlineshopping.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -19,5 +20,6 @@ public class Categories {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Products> products;
 }

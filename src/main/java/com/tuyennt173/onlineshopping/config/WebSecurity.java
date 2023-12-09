@@ -31,7 +31,7 @@ public class WebSecurity {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/order/**").authenticated()
-                                .requestMatchers("/admin/**").hasAnyAuthority("STAF", "DIRE")
+                                .requestMatchers("/assets/admin/**").hasAnyAuthority("STAF", "DIRE")
                                 .requestMatchers("/api/authorize").hasAnyAuthority("DIRE")
                                 .anyRequest().permitAll()
                 )

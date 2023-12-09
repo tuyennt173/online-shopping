@@ -18,7 +18,6 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_name")
     private Accounts account;

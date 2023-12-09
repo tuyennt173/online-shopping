@@ -16,11 +16,9 @@ public class Authorities {
 
     @ManyToOne
     @JoinColumn(name = "user_name")
-    @JsonIgnore
     private Accounts account;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    @JsonIgnore
     private Roles role;
 }

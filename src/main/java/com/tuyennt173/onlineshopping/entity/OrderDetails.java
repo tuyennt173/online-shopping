@@ -18,7 +18,6 @@ public class OrderDetails {
     @JoinColumn(name = "order_id")
     private Orders order;
 
-    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "product_id")
     private Products product;

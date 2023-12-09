@@ -19,7 +19,7 @@ public class ProductUTest {
     @Test
     public void getAllProducts() {
         productService.getAllProducts()
-                .forEach(p -> System.out.println(p.getName()));
+                .forEach(p -> System.out.println(p.getName() + " | " + p.getCategory().getName()));
     }
 
     @Test
